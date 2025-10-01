@@ -82,12 +82,13 @@ export default function SeriesDetailFromCache({ id }: { id: string }) {
         {videoUrl ? (
           <div className="">{/* 16:9, responsive */} {/* [web:633] */}
             <iframe
-              className="w-full h-120"
+              className="w-full h-full aspect-video"
               src={videoUrl}
               title={`${title} — ${selectedEpisode?.name ?? ""}`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-same-origin allow-scripts allow-forms"
             />
           </div>
         ) : (
@@ -232,3 +233,4 @@ export default function SeriesDetailFromCache({ id }: { id: string }) {
     </div>
   );
 }
+
