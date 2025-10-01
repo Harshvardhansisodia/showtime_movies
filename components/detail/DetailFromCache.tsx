@@ -39,7 +39,7 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
   const overview = data.overview ?? "—";
   const poster = resolveImage(data.poster_path) || "/images/notavailable.png";
   const backdrop = resolveBackdrop(data.backdrop_path) || "";
-  const videoUrl: string | undefined = data.video_url?.trim() || `https://vidmoly.net/embed-gol41vnxjodj.html`; // expected in payload
+  const videoUrl: string | undefined = data.video_url?.trim() || backdrop; // expected in payload
 
   return (
     <div className="space-y-6">
@@ -48,12 +48,13 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
         {isMovie && videoUrl ? (
           <div className=""> {/* 16:9 responsive player */} {/* [web:633][web:644] */}
             <iframe
-              className="w-full h-120"
+              className="w-full h-full aspect-video"
               src={videoUrl}
               title={title}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
+              sandbox="allow-same-origin allow-scripts allow-forms"
             />
           </div>
         ) : (
@@ -133,3 +134,4 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
     </div>
   );
 }
+
