@@ -71,7 +71,7 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
       </div>
 
       {/* Content block */}
-      <div className="flex flex-col md:flex-row md:items-start md:gap-6">
+      <div className="flex flex-col md:-mt-39 md:flex-row md:items-start md:gap-6">
         {/* Poster */}
         <div className="hidden md:relative mx-auto md:mx-0 w-40 md:w-48 lg:w-56 aspect-[2/3] overflow-hidden rounded-lg shadow-lg">
           <Image src={poster} alt={title} fill className="object-cover" sizes="(max-width: 768px) 160px, 224px" />
@@ -129,5 +129,6 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
     </div>
   );
 }
+
 
 
