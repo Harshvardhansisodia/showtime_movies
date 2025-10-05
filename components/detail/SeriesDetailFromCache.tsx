@@ -80,16 +80,11 @@ export default function SeriesDetailFromCache({ id }: { id: string }) {
       {/* Player or still image (16:9 responsive) */}
       <div className="w-full overflow-hidden rounded-lg bg-black/30">
         {videoUrl ? (
-          <div className="">{/* 16:9, responsive */} {/* [web:633] */}
-            <iframe
-              className="w-full h-full aspect-video"
-              src={videoUrl}
-              title={`${title} — ${selectedEpisode?.name ?? ""}`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-same-origin allow-scripts allow-forms"
-            />
+         <div className="relative md:bottom-33 w-full aspect-video"> {/* 16:9 responsive player */} {/* [web:633][web:644] */}
+          <HLSPlayer 
+            videoUrl={videoUrl}
+            title={title}
+          />
           </div>
         ) : (
           <div className="relative aspect-video">
@@ -233,5 +228,6 @@ export default function SeriesDetailFromCache({ id }: { id: string }) {
     </div>
   );
 }
+
 
 
