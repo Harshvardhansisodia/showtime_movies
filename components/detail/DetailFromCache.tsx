@@ -44,17 +44,12 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
   return (
     <div className="space-y-6">
       {/* Hero area: iframe for movies if video_url exists, else backdrop image */}
-      <div className=" w-full overflow-hidden rounded-lg bg-black/30">
+      <div className="w-full overflow-hidden rounded-lg bg-black/30">
         {isMovie && videoUrl ? (
-          <div className=""> {/* 16:9 responsive player */} {/* [web:633][web:644] */}
-            <iframe
-              className="w-full h-full aspect-video"
-              src={videoUrl}
+          <div className="relative md:bottom-33 w-full aspect-video"> {/* 16:9 responsive player */} {/* [web:633][web:644] */}
+            <HLSPlayer 
+              videoUrl={videoUrl}
               title={title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-same-origin allow-scripts allow-forms"
             />
           </div>
         ) : (
@@ -134,4 +129,5 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
     </div>
   );
 }
+
 
