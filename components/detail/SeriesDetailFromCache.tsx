@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { resolveImage } from "@/lib/images";
+import HLSPlayer from "../player/hls";
 
 type Episode = {
   id: number;
@@ -228,6 +229,7 @@ export default function SeriesDetailFromCache({ id }: { id: string }) {
     </div>
   );
 }
+
 
 
 
