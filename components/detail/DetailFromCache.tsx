@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { resolveBackdrop, resolveImage } from "@/lib/images";
+import HLSPlayer from "../player/hls";
 
 type Kind = "movies" | "series" | "request";
 
@@ -129,6 +130,7 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
     </div>
   );
 }
+
 
 
 
