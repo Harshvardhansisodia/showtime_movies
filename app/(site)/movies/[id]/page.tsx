@@ -10,8 +10,9 @@ export const metadata = {
 export default async function MovieDetail({ params }: Props) {
   const { id } = await params; // Next 15: await params [web:517]
   return (
-    <section className="px-6 py-10">
+    <section className="px-6">
       <DetailFromCache kind="movies" id={id} />
     </section>
   );
 }
+
