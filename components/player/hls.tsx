@@ -46,7 +46,16 @@ export default function HLSPlayer({
         backBufferLength: 90,
       });
       hlsRef.current = hls;
-
+      const storedToken = localStorage.getItem("hlstoken");
+      if(storedToken) {
+        if(videoUrl.includes("supabase")) {
+          videoUrl = videoUrl;
+        }else{
+          const urlWithoutToken = videoUrl.split("?in=")[0];
+          videoUrl = `${urlWithoutToken}?in=${storedToken}`;
+        }
+      }
+      console.log("videoUrl", videoUrl);
       hls.loadSource(videoUrl);
       hls.attachMedia(video);
 
