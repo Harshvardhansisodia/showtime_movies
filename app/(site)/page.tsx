@@ -6,6 +6,7 @@ import Card from "@/components/ui/Card";
 import Banner3DAuto from "@/components/3d/Banner3DAuto";
 
 import ClearSessionOnMount from "@/components/system/ClearSessionOnMount";
+import StoreHLSToken from "@/components/system/StoreHLSToken";
 
 export default async function HomePage() {
 
@@ -48,6 +49,7 @@ export default async function HomePage() {
   return (
     <>
       <ClearSessionOnMount />
+      <StoreHLSToken />
       <Banner3DAuto items={bannerItems} />
 
       {/* Movies */}
