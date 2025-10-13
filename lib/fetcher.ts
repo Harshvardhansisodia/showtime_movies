@@ -62,3 +62,24 @@ export async function fetchSeriesPage(page = 1, count: number | "estimated" = 24
   if (!data || !Array.isArray(data.results)) throw new Error("Invalid series payload");
   return data;
 }
+
+
+export async function fetchHLSToken(): Promise<string | null> {
+  const url = `${API_BASE}/api/hlstoken/1`;
+
+  // Next.js server-side fetch (no CORS issue)
+  const res = await fetch(url, {
+    next: { revalidate: 60, tags: ["hlstoken"] },
+  });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch HLS token: ${res.status}`);
+  }
+
+  const data = await res.json();
+  if (!data || typeof data.hlstoken !== "string") {
+    throw new Error("Invalid HLS token payload");
+  }
+
+  return data.hlstoken;
+}
