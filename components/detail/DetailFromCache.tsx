@@ -16,7 +16,11 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
       const raw = sessionStorage.getItem(key);
       if (raw) {
         const parsed = JSON.parse(raw);
-        setData(parsed?.data ?? null);
+        if (parsed?.data?.payload) {
+          setData(parsed?.data?.payload ?? null);
+        } else {
+          setData(parsed?.data ?? null);
+        }
       } else {
         setData(null);
       }
@@ -130,6 +134,7 @@ export default function DetailFromCache({ kind, id }: { kind: Kind; id: string }
     </div>
   );
 }
+
 
 
 
